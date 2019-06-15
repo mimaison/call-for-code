@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+    p New user? 
+        a(href="/users/register") Register yourself now!
+    br
+    p Already registered?
+        form(action="/users" method="get")
+            div Username
+                input(type="text" name="username")
+            button(type="submit") Login

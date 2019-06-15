@@ -1,0 +1,5 @@
+{
+    "cloudantUrl": "<CLOUDANT_URL>",
+    "cloudantApiKey": "<CLOUDANT_APIKEY>",
+    "cloudantDb": "users"
+}

@@ -1,0 +1,21 @@
+html, body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 500px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: solid 2px black;
+  border-radius: 15px;
+  display: block;
+  box-sizing: border-box;
+  max-width: 500px;
+  margin: auto;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.error {
+  color: red;
+}

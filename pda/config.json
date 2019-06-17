@@ -1,5 +1,9 @@
 {
     "cloudantUrl": "<CLOUDANT_URL>",
     "cloudantApiKey": "<CLOUDANT_APIKEY>",
-    "cloudantDb": "users"
+    "cloudantDb": "users",
+    "kafkaBrokers": "<KAFKA_BROKERS>",
+    "certsPath": "<CERTS_PATH>",
+    "kafkaApiKey": "<KAFKA_APIKEY>",
+    "kafkaDisasterTopic": "disasters"
 }

@@ -1,0 +1,9 @@
+{
+    "type": "hurricane",
+    "start": "2019-12-12T15:15Z",
+    "end": "2019-12-15T15:15Z",
+    "location": {
+        "latitude": 18.40,
+        "longitude": -66.10
+    }
+}

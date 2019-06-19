@@ -1,5 +1,6 @@
 var config = require('../utils/config.js')
 var kafka = require('node-rdkafka');
+var handler = require('../utils/handler.js');
 
 const connectTimeoutMs = 10000;
 
@@ -17,6 +18,23 @@ const getProducerConfig = () => {
     };
     console.log('producer configs' + JSON.stringify(producerConfig));
     return producerConfig;
+}
+
+const getConsumerConfig = (gid) => {
+    var consumerConfig = {
+        'metadata.broker.list': config.getKafkaBrokers(),
+        'security.protocol': 'sasl_ssl',
+        'ssl.ca.location': config.getCertsPath(),
+        'sasl.mechanisms': 'PLAIN',
+        'sasl.username': 'token',
+        'sasl.password': config.getKafkaApiKey(),
+        'broker.version.fallback': '0.10.2.1',
+        'log.connection.close' : false,
+        'group.id': gid,
+        'enable.auto.commit' : true
+    };
+    console.log('consumer configs' + JSON.stringify(consumerConfig));
+    return consumerConfig;
 }
 
 var producer = new kafka.Producer(getProducerConfig(), {
@@ -40,6 +58,29 @@ producer.on('delivery-report', (err, report) => {
     } else {
         console.error('Assertion failed: opaque not a function!' + err);
     }
+});
+
+var consumer = new kafka.KafkaConsumer(getConsumerConfig('disaster-listener'), {});
+consumer.connect({ timeout: connectTimeoutMs }, function(err, info) {
+    if (err) {
+        console.error('Error in consumer connect cb', err);
+        process.exit(-99);
+    } else {
+        console.log('Consumer connected to Kafka');
+    }
+    consumer.on('data', function(message) {
+        try {
+            if (message.topic === config.getDisasterTopicName()) {
+                handler.handleDisaster(message);
+            }
+            consumer.commitMessageSync(message);
+        } catch(err) {
+            // TODO send to error queue
+            console.log(err)
+        }
+    });
+    consumer.subscribe([config.getDisasterTopicName()]); //will consume from committed
+    consumer.consume();
 });
 
 const emit = (key, event) => {

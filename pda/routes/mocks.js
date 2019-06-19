@@ -17,4 +17,36 @@ router.post('/disaster', function(req, res, next) {
     });
 });
 
+// Mock todo list generation
+router.post('/todo', function(req, res, next) {
+    var userDetails = req.body;
+    console.log('in todo router ' + JSON.stringify(userDetails));
+    var todos = {
+        'start': userDetails.event.start,
+        'end': userDetails.event.end,
+        'before': {
+            'supplies': [
+                'Gather x amount of supplies'
+            ],
+            'properties': [
+                'Document state of your properties'
+            ]
+        },
+        'during': {
+            'supplies': [],
+            'properties': [
+                'Document state of your properties'
+            ],
+            'health': []
+        },
+        'after': {
+            'properties': [
+                'Document state of your properties'
+            ],
+            'health': []
+        }
+    }
+    res.json(todos);
+});
+
 module.exports = router;

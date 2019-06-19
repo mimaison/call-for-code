@@ -16,6 +16,7 @@ router.post('/register', function(req, res, next) {
     var adults = req.body.adults;
     var children = req.body.children;
     var infants = req.body.infants;
+    var pets = req.body.pets;
     var needs = req.body.needs;
     if (username && country && latitude && longitude && adults >= 0 && children >= 0 && infants >=0) {
         var user = {
@@ -27,6 +28,7 @@ router.post('/register', function(req, res, next) {
             'adults': adults,
             'children': children,
             'infants': infants,
+            'pets': pets,
             'needs': needs
         }
         cloudant.registerUser(user, function(err, data) {
@@ -48,10 +50,36 @@ router.get('/', function(req, res, next) {
 });
 
 // Todo
-router.get('/todo', function(req, res, next) {
-    var date = req.query.date;
+router.get('/:username/todo/', function(req, res, next) {
+    var username = req.params.username;
+    var date = new Date();
+    res.redirect('/users/' + username + '/todo/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDay());
+});
+
+router.get('/:username/todo/:year/:month/:day', function(req, res, next) {
+    var username = req.params.username;
+    var year = req.params.year;
+    var month = req.params.month;
+    var day = req.params.day;
+    var date = new Date(year, month-1, day, 0, 0, 0, 0);
     cloudant.getUser(username, function(err, data) {
-        res.json(data);
+        if (err) {
+            res.render('failure', { 'message': 'Unknown username ' + username });
+        } else {
+            if (data.todos !== undefined) {
+                var start = Date.parse(data.todos.disaster.start);
+                var end = Date.parse(data.todos.disaster.end);
+                if (date < start) {
+                    res.render('users/prepare', { 'disaster': data.todos.disaster, 'todos': data.todos.before });
+                } else if (date < end) {
+                    res.render('users/survive', { 'disaster': data.todos.disaster, 'todos': data.todos.during });
+                } else {
+                    res.render('users/rebuild', { 'todos': data.todos.after });
+                }
+            } else {
+                res.render('users/nodisaster');
+            }
+        }
     });
 });
 

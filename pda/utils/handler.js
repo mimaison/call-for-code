@@ -23,7 +23,7 @@ const handleDisaster = (message) => {
 }
 
 const updateUserTodos = (userDetails) => {
-    request.post('http://localhost:3000/mocks/todo', {
+    request.post('http://localhost:3000/mocks/todos', {
         'json': userDetails
     },
     function(err, response, body) {

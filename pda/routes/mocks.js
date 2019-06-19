@@ -18,12 +18,11 @@ router.post('/disaster', function(req, res, next) {
 });
 
 // Mock todo list generation
-router.post('/todo', function(req, res, next) {
+router.post('/todos', function(req, res, next) {
     var userDetails = req.body;
     console.log('in todo router ' + JSON.stringify(userDetails));
-    var todos = {
-        'start': userDetails.event.start,
-        'end': userDetails.event.end,
+    var disaster = {
+        'disaster': userDetails.event,
         'before': {
             'supplies': [
                 'Gather x amount of supplies'
@@ -46,7 +45,7 @@ router.post('/todo', function(req, res, next) {
             'health': []
         }
     }
-    res.json(todos);
+    res.json(disaster);
 });
 
 module.exports = router;

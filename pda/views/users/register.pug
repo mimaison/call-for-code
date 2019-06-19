@@ -11,6 +11,7 @@ block content
             div Location
                 select(name="country")
                     option(value="Puerto Rico") Puerto Rico
+                    option(value="United Kingdom") United Kingdom
                 input(type="text" name="latitude" id="latitude" value="18.40")
                 input(type="text" name="longitude" id="longitude" value="-66.10")
         fieldset
@@ -21,6 +22,10 @@ block content
                 input(type="number" name="children" value="0")
             div Infants
                 input(type="number" name="infants" value="0")
+        fieldset
+            legend Pets
+            div I have pets
+                input(type="checkbox" name="pets")
         fieldset
             legend Special needs
             textarea(name="needs")

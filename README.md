@@ -11,6 +11,7 @@
 5. The connector pushes the weather data to Event Streams
 6. IBM Streams consumes the weather data, identifies natural disasters and pushes an event back to Event Streams
 7. PDA consumes disaster events
+8. PDA generates personalized todos
 
 ## Prerequisites
 

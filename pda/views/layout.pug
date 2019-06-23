@@ -4,8 +4,22 @@ html
         title Personalized Disaster Assistant
         link(rel='stylesheet', href='/stylesheets/style.css')
     body
-        h1 Personalized Disaster Assistant
-        div
-          a(href="/") Home
+        div(id="app")
+          div(id="header")
+            h1 Personalized Disaster Assistant
+            ul(class="menu")
+              li
+                a(href="/") Home
+              if username
+                li
+                  a(href="/users/profile") Profile
+                li
+                  a(href="/users/todo") Todos
+                li
+                  a(href="/users/logout") Logout
 
-        block content
+          div(id="content")
+            block content
+
+          p(class="footer")
+            a(href="https://github.ibm.com/mickael-maison/call-for-code") PDA is a Call For Code submission - 2019

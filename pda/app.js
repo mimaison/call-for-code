@@ -22,9 +22,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Ensure Login
+app.use('/*', function(req, res, next) {
+    var username = req.cookies.username;
+    if (username !== undefined) {
+        res.locals.username = username;
+    }
+    next();
+});
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/mocks', mocksRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

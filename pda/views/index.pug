@@ -2,11 +2,18 @@ extends layout
 
 block content
 
-    p New user? 
-        a(href="/users/register") Register yourself now!
-    br
-    p Already registered?
-        form(action="/users" method="get")
-            div Username
-                input(type="text" name="username")
-            button(type="submit") Login
+    if !username
+        p New user?
+            a(href="/users/register") Register yourself now!
+        br
+        p Already registered?
+            form(action="/users/login" method="post")
+                div Username
+                    input(type="text" name="username")
+                    button(type="submit" class="button") Login
+    else
+        p Welcome back #{username}!
+
+        p Personalized Disaster Assistant provides personalized actionable tasks to help you before, during and after a disaster.
+
+        p Check your #[a(href="/users/todo") todos] to see if you have any tasks to complete today.

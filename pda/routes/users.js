@@ -44,20 +44,27 @@ router.post('/register', function(req, res, next) {
 });
 
 // Login
-router.get('/', function(req, res, next) {
-    var username = req.query.username;
-    res.redirect('users/' + username);
+router.post('/login', function(req, res, next) {
+    var username = req.body.username;
+    res.cookie('username', username, { maxAge: 900000, httpOnly: true });
+    console.log('cookie created successfully');
+    res.redirect('/');
+});
+
+// Logout
+router.get('/logout', function(req, res, next) {
+    res.clearCookie('username');
+    res.redirect('/');
 });
 
 // Todo
-router.get('/:username/todo/', function(req, res, next) {
-    var username = req.params.username;
+router.get('/todo/', function(req, res, next) {
     var date = new Date();
-    res.redirect('/users/' + username + '/todo/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
+    res.redirect('/users/todo/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
 });
 
-router.get('/:username/todo/:year/:month/:day', function(req, res, next) {
-    var username = req.params.username;
+router.get('/todo/:year/:month/:day', function(req, res, next) {
+    var username = req.cookies.username;
     var year = req.params.year;
     var month = req.params.month;
     var day = req.params.day;
@@ -84,8 +91,8 @@ router.get('/:username/todo/:year/:month/:day', function(req, res, next) {
 });
 
 // Profile
-router.get('/:username', function(req, res, next) {
-    var username = req.params.username;
+router.get('/profile', function(req, res, next) {
+    var username = req.cookies.username;
     cloudant.getUser(username, function(err, data) {
         if (err) {
             res.render('failure', { 'message': 'Unknown username ' + username });

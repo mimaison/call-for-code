@@ -1,15 +1,55 @@
-html, body {
+body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  width: 500px;
-  height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  width: 500px;
+  height: 800px;
   border: solid 2px black;
   border-radius: 15px;
-  display: block;
-  box-sizing: border-box;
   max-width: 500px;
   margin: auto;
+  background-color: rgb(0, 98, 255);
+  display: block;
+  overflow: hidden;
+}
+
+.button {
+  background-color: rgb(0,98,255);
+  border: none;
+  color: white;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#header * {
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+#content {
+  background-color: white;
+  padding: 5px;
+  height: 650px;
+}
+
+ul.menu {
+  list-style: none;
+  padding: 5px;
+}
+
+ul.menu li {
+  display: inline;
+  padding: 5px;
 }
 
 a {
@@ -22,4 +62,10 @@ a {
 
 .todo_title {
   text-transform: capitalize;
+}
+
+.footer {
+  color: white;
+  font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
 }

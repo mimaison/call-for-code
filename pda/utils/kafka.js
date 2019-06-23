@@ -87,8 +87,8 @@ const emit = (key, event) => {
     if (!producerReady) {
         // kafka will handle reconnections but the produce method should never 
         // be called if the client was never 'ready'
-        console.log('Producer never connected to Kafka yet');
-        return Promise.reject(new Error('Producer never connected to Kafka yet'));
+        console.log('Producer is not connected to Kafka');
+        return Promise.reject(new Error('Producer is not connected to Kafka'));
     }
 
     return new Promise((resolve, reject) => {

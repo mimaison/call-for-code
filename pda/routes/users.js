@@ -53,7 +53,7 @@ router.get('/', function(req, res, next) {
 router.get('/:username/todo/', function(req, res, next) {
     var username = req.params.username;
     var date = new Date();
-    res.redirect('/users/' + username + '/todo/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDay());
+    res.redirect('/users/' + username + '/todo/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
 });
 
 router.get('/:username/todo/:year/:month/:day', function(req, res, next) {
@@ -70,9 +70,9 @@ router.get('/:username/todo/:year/:month/:day', function(req, res, next) {
                 var start = Date.parse(data.todos.disaster.start);
                 var end = Date.parse(data.todos.disaster.end);
                 if (date < start) {
-                    res.render('users/prepare', { 'disaster': data.todos.disaster, 'todos': data.todos.before });
+                    res.render('users/prepare', { 'disaster': data.todos.disaster, 'todos': data.todos.before, 'now': date });
                 } else if (date < end) {
-                    res.render('users/survive', { 'disaster': data.todos.disaster, 'todos': data.todos.during });
+                    res.render('users/survive', { 'disaster': data.todos.disaster, 'todos': data.todos.during, 'now': date });
                 } else {
                     res.render('users/rebuild', { 'todos': data.todos.after });
                 }
@@ -87,7 +87,6 @@ router.get('/:username/todo/:year/:month/:day', function(req, res, next) {
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
     cloudant.getUser(username, function(err, data) {
-        console.log(data);
         if (err) {
             res.render('failure', { 'message': 'Unknown username ' + username });
         } else {

@@ -19,3 +19,7 @@ a {
 .error {
   color: red;
 }
+
+.todo_title {
+  text-transform: capitalize;
+}

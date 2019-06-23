@@ -20,7 +20,6 @@ router.post('/disaster', function(req, res, next) {
 // Mock todo list generation
 router.post('/todos', function(req, res, next) {
     var userDetails = req.body;
-    console.log('in todo router ' + JSON.stringify(userDetails));
     var disaster = {
         'disaster': userDetails.event,
         'before': {

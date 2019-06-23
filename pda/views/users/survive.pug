@@ -4,6 +4,17 @@ block content
 
     h2 Survive
 
-    p=JSON.stringify(disaster)
+    p The #{disaster.type} affecting your location will end #{moment(disaster.end).from(now)}
 
-    p=JSON.stringify(todos)
+    p You should stay safe by completing the following actions:
+
+    each val, index in todos
+        div
+            span(class="todo_title")= index
+            ul
+                each val in todos[index]
+                    li
+                        input(type="checkbox")
+                        span= val
+                else
+                    li Nothing to do

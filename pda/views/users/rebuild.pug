@@ -4,4 +4,15 @@ block content
 
     h2 Rebuild
 
-    p=JSON.stringify(todos)
+    p You should stay healthy by completing the following actions:
+
+    each val, index in todos
+        div
+            span(class="todo_title")= index
+            ul
+                each val in todos[index]
+                    li
+                        input(type="checkbox")
+                        span= val
+                else
+                    li Nothing to do

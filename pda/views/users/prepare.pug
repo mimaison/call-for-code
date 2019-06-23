@@ -4,6 +4,17 @@ block content
 
     h2 Prepare
 
-    p=JSON.stringify(disaster)
+    p A #{disaster.type} is predicted to hit your location #{moment(disaster.start).from(now)} and last #{moment(disaster.end).diff(disaster.start, 'days')} days
 
-    p=JSON.stringify(todos)
+    p You should prepare by completing the following actions:
+
+    each val, index in todos
+        div
+            span(class="todo_title")= index
+            ul
+                each val in todos[index]
+                    li
+                        input(type="checkbox")
+                        span= val
+                else
+                    li Nothing to do

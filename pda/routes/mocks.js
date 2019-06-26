@@ -32,7 +32,7 @@ router.post('/todos', function(req, res, next) {
         'before': {
             'supplies': [
                 'Your family requires ' + ( (numOfAdults *2250) + (numOfChildren *1700)) * numOfDisasterDays + ' calories worth of food. These should be long-life, sealed foods that contain plenty of energy, such as tinned vegetables, packaged ready-to-eat meals and chocolate.',
-                'Your family requires ' + ( ( (numOfAdults + numOfChildren + numOfInfants) * 2) * numOfDisasterDays) + ' litres of water. This should be stored in sealed, durable containers.',
+                'Your family requires ' + ( ((numOfAdults * 2) + (numOfChildren * 2) + (numOfInfants * 2)) * numOfDisasterDays) + ' litres of water. This should be stored in sealed, durable containers.',
                 'You will require a water filtration device, kettle or other such water purification tool.',
             ],
             'properties': [

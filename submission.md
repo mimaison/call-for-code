@@ -6,6 +6,8 @@ Personalized Disaster Assistant
 
 ## Short description
 
+Your handy, personalised digital guide to surviving through any disaster.
+
 ## Long description
 
 ## Solution roadmap

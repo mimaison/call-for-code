@@ -34,26 +34,26 @@ router.post('/todos', function(req, res, next) {
                 'Your family requires ' + ( (numOfAdults *2250) + (numOfChildren *1700)) * numOfDisasterDays + ' calories worth of food. These should be long-life, sealed foods that contain plenty of energy, such as tinned vegetables, packaged ready-to-eat meals and chocolate.',
                 'Your family requires ' + ( ( (numOfAdults + numOfChildren + numOfInfants) * 2) * numOfDisasterDays) + ' litres of water. This should be stored in sealed, durable containers.',
                 'You will require a water filtration device, kettle or other such water purification tool.',
-                'Ensure you have enough supplies of  ' + userDetails.needs + ' for ' + numOfDisasterDays + 'days'
             ],
             'properties': [
-                'Document state of your properties'
-            ]
+                'Document the state of your properties',
+                'Unplug your electrical and gas appliances to avoid damages'
+            ],
+            'health': []
         },
         'during': {
             'supplies': [
                 'Check all containers of food for signs of damage or water ingress. These items are not safe to consume and should be discarded.',
                 'Check all containers of water for signs of damage. Any damage will mean that this water is potentially unsafe and should be purified or filtered before consumption.',
                 'Each adult in your family should consume 2250 calories per day.',
-                'Each child in your family should consume 1700 calories per day.',
-                'Each infant in your family should consume a days worth of infant-safe food.',
                 'Each person in your family should consume 2 litres of water.'
             ],
             'properties': [
-                'Document state of your properties'
+                'Document the state of your properties'
             ],
             'health': [
-                'Report if you have medical need or urgent attention'
+                'Report if you have medical need or urgent attention',
+                'Do one of these physical/mental exercises to reduce stress'
             ]
         },
         'after': {
@@ -62,15 +62,27 @@ router.post('/todos', function(req, res, next) {
                 'Check whether the items in your freezer have thawed or re-frozen. If so, the food is unsafe and should be discarded.'
             ],
             'properties': [
-                'Document state of your properties'
+                'Document the state of your properties'
             ],
             'health': [
-                'Report if you have medical need or urgent attention'
+                'Report if you have medical need or urgent attention',
+                'Do one of these physical/mental exercises to reduce stress'
             ]
         }
     }
     if (numOfInfants > 0) {
         disaster.before.supplies.push('Your family requires ' + numOfInfants * numOfDisasterDays+ ' days of infant-safe food.');
+        disaster.during.supplies.push('Each infant in your family should consume a days worth of infant-safe food.')
+    }
+    if (numOfChildren > 0) {
+        disaster.during.supplies.push('Each child in your family should consume 1700 calories per day.');
+    }
+    if (userDetails.pets) {
+        disaster.before.properties.push('Ensure your pets are indoors and have enough food.');
+    }
+    if (userDetails.needs) {
+        disaster.before.health.push('Keep in mind your special needs: ' + userDetails.needs);
+        disaster.during.health.push('Keep in mind your special needs: ' + userDetails.needs);
     }
     res.json(disaster);
 });

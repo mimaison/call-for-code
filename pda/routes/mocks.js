@@ -1,5 +1,6 @@
 var kafka = require('../utils/kafka');
 var express = require('express');
+var moment = require('moment');
 var router = express.Router();
 
 // Mock disaster
@@ -19,18 +20,19 @@ router.post('/disaster', function(req, res, next) {
 
 // Mock todo list generation
 router.post('/todos', function(req, res, next) {
-    var userDetails = req.body;
+    var userDetails = req.body.user;
+    var event = req.body.event;
+
     var numOfAdults = userDetails.adults;
     var numOfChildren = userDetails.children;
     var numOfInfants = userDetails.infants;
-    var numOfDisasterDays = (disaster.end - disaster.start);
+    var numOfDisasterDays = moment.duration(moment(event.end).diff(moment(event.start))).days();
     var disaster = {
-        'disaster': userDetails.event,
+        'disaster': event,
         'before': {
             'supplies': [
-                'Your family requires' + ( (numOfAdults *2250) + (numOfChildren *1700)) * numOfDisasterDays + ' calories worth of food. These should be long-life, sealed foods that contain plenty of energy, such as tinned vegetables, packaged ready-to-eat meals and chocolate.',
-                'Your family requires' + numOfInfants * numOfDisasterDays+ 'days of infant-safe food.',
-                'Your family will require' + ( ( (numOfAdults + numOfChildren + numOfInfants) * 2) * numOfDisasterDays) + 'litres of water. This should be stored in sealed, durable containers.',
+                'Your family requires ' + ( (numOfAdults *2250) + (numOfChildren *1700)) * numOfDisasterDays + ' calories worth of food. These should be long-life, sealed foods that contain plenty of energy, such as tinned vegetables, packaged ready-to-eat meals and chocolate.',
+                'Your family requires ' + ( ( (numOfAdults + numOfChildren + numOfInfants) * 2) * numOfDisasterDays) + ' litres of water. This should be stored in sealed, durable containers.',
                 'You will require a water filtration device, kettle or other such water purification tool.',
                 'Ensure you have enough supplies of  ' + userDetails.needs + ' for ' + numOfDisasterDays + 'days'
             ],
@@ -66,6 +68,9 @@ router.post('/todos', function(req, res, next) {
                 'Report if you have medical need or urgent attention'
             ]
         }
+    }
+    if (numOfInfants > 0) {
+        disaster.before.supplies.push('Your family requires ' + numOfInfants * numOfDisasterDays+ ' days of infant-safe food.');
     }
     res.json(disaster);
 });

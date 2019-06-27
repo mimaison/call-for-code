@@ -29,6 +29,12 @@
 
 ## How to run the application
 
+### Move to the pda folder
+
+```shell
+cd pda
+```
+
 ### Install dependencies
 
 ```shell

@@ -38,6 +38,7 @@ https://github.ibm.com/mickael-maison/call-for-code
 
 ## Link to a three-minute demo video
 
+https://ibm.ent.box.com/file/482578929629
 
 ## List of IBM Cloud Services or IBM Systems used in the solution
 

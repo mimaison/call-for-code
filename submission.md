@@ -2,7 +2,7 @@
 
 ## Submission name
 
-Personalized Disaster Assistant
+Personal Disaster Assistant
 
 ## Short description
 
@@ -10,13 +10,13 @@ Your handy, personalized digital assistant to surviving natural disasters.
 
 ## Long description
 
-Our Call for Code submission, Personalized Disaster Assistant (PDA), is a mobile application that helps people affected by natural disaster by recommending personalized actionable tasks before, during and after a disaster. 
+Our Call for Code submission, Personal Disaster Assistant (PDA), is a mobile application that helps people affected by natural disaster by recommending personalised actionable tasks before, during and after a disaster. 
 
-The action list not only provides expert advice personalized for the current disaster and user, useful in a crisis and stressful situation when it is harder to think calmly and make optimal decisions, but also provides a reassurance that the user is taking sensible actions, and not forgetting actions that they obviously ought to be taking. There is a mental health benefit from having a clear list of priority actions to take and being able to feel that you are able to take some action for the good of yourself and the people important to you. We believe the application can help reduce stress by acting like a real assistant accompanying users during difficult time.
+This action list not only provides expert advice personalised for the current disaster and user, useful in a crisis and stressful situation when it is harder to think calmly and make optimal decisions, but also provides a reassurance that the user is taking sensible actions, and not forgetting actions that they obviously ought to be taking. There is a mental health benefit from having a clear list of priority actions to take and being able to feel that you are able to take some action for the good of yourself and the people important to you. We believe the application can help reduce stress by acting like a real assistant accompanying users during difficult time.
 
-To get the full benefits from Personalized Disaster Assistant, users should register and provide a few pieces of information about their geographical location, family, special needs and dependents. This allows the application to better select and personalise the suggested actions that will be generated in case a disaster was to happen. This data is uploaded to the PDA server and stored in a Cloudant database.
+To get the full benefit from Personal Disaster Assistant, users should register and provide a few pieces of information about their geographical location, family, special needs, and dependents. This allows the application to better select and personalise the suggested actions that will be generated in the event of a disaster. This data is uploaded to the PDA server and stored in a Cloudant database.
 
-Alongside the PDA server, a weather data pipeline composed of the IBM Weather Service, IBM Event Streams and IBM Streaming Analytics ingests weather conditions and alerts and is able to generate events in case natural disasters are expected with the precise geographical locations.
+Alongside the PDA server, a weather data pipeline composed of the IBM Weather Service, IBM Event Streams and IBM Streaming Analytics ingests weather conditions and alerts and is able to generate events in case natural disasters are expected, with the precise geographical locations.
 
 From the moment a disaster is predicted, the PDA server is able to identify users likely to be affected, alert them, and generate recommended actions to prepare or evacuate.
 

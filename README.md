@@ -2,6 +2,10 @@
 
 Your handy, personalized digital assistant to surviving natural disasters.
 
+See [submission.md](submission.md) for the full Call for Code submission details.
+
+See [roadmap.md](roadmap.md) for details about the current state of the project and its roadmap.
+
 ## Design
 
 ![Design](design/design.png)

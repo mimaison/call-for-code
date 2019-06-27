@@ -2,7 +2,7 @@
 
 ## Submission name
 
-personalized Disaster Assistant
+Personalized Disaster Assistant
 
 ## Short description
 

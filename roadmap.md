@@ -6,6 +6,8 @@ The next steps would be to first gather expert recommendations for each type of 
 
 As the solution is designed using very scalable services (Event Streams, Cloudant) we expect the current architecture to be able to be deployed at scale and cover large populations.
 
+In the future, this simple application could be extended to consume data and alerts from a variety of sources, or to provide helpful advice from local authorities at other times, not just during disaster, for example medical advice and updates.
+
 # Solution design
 
 ![Design](design/design.png)

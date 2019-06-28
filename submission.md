@@ -10,23 +10,23 @@ Your handy, personalized digital assistant to surviving natural disasters.
 
 ## Long description
 
-Our Call for Code submission, Personalized Disaster Assistant (PDA), is a mobile application that helps people affected by natural disaster by recommending personalized actionable tasks before, during and after a disaster. 
+During a natural disaster, it is hard to think clearly and calmly about what you need to do. Under stress, it is easy to react to situations without stopping to think and plan about what actions are the best to take, to safeguard yourself and those around you, not just in the immediate situation, but also in the short-term future. Just before disaster strikes, you are under pressure to make every preparation possible, as quickly as possible, without forgetting anything crucial.
 
-This action list not only provides expert advice personalized for the current disaster and user, useful in a crisis and stressful situation when it is harder to think calmly and make optimal decisions, but also provides a reassurance that the user is taking sensible actions, and not forgetting actions that they obviously ought to be taking. There is a mental health benefit from having a clear list of priority actions to take and being able to feel that you are able to take some action for the good of yourself and the people important to you. We believe the application can help reduce stress by acting like a real assistant accompanying users during difficult time.
+Our solution is a mobile application, called the Personalized Disaster Assistant (PDA), that helps people affected by natural disaster by recommending personalized actionable tasks before, during and after a disaster.
 
-To get the full benefit from Personalized Disaster Assistant, users should register and provide a few pieces of information about their geographical location, family, special needs, and dependents. This allows the application to better select and personalize the suggested actions that will be generated in the event of a disaster. This data is uploaded to the PDA server and stored in a Cloudant database.
+A user would register and provide information about their location, family, special needs, and dependents. This allows the application to better select and personalize the suggested actions that will be generated in the event of a disaster. This data is uploaded to the PDA server and stored securely in a highly available database.
 
-Alongside the PDA server, a weather data pipeline composed of the IBM Weather Service, IBM Event Streams and IBM Streaming Analytics ingests weather conditions and alerts and is able to generate events in case natural disasters are expected, with the precise geographical locations.
+The PDA can consume data and alerts from a variety of sources, (e.g. the IBM Weather Service), and feed them to IBM Streaming Analytics to generate events when extreme conditions are expected. Matching these events with precise geographical locations, the PDA can warn users that a disaster may be imminent.
 
-From the moment a disaster is predicted, the PDA server is able to identify users likely to be affected, alert them, and generate recommended actions to prepare or evacuate.
+At that point, an action list is also suggested, including things such as how much food and clean water to store, whether to try to evacuate or take shelter, medical supplies to gather, and other actions specific to the type of disaster and the user.
 
-For as long as network connectivity is maintained, updated actions lists will be pushed regularly, during the disaster, and then continuing in the immediate aftermath, changing as the likely needs and priorities of the users change. If possible, users can also update their status, which will personalize their advice further, such as highlighting the need for urgent medical care or supplies or suggesting attempting to reach a relief effort in the region.
+During the disaster, an updated action list is pushed out to users, with the emphasis changing from preparation to surviving, and helping others to survive. At this point, if communication is possible, the app could be used to provide updates to emergency services about anyone in critical condition, and receive advice for their care in return.
 
-The application is designed to support intermittent connectivity by caching data on the phone and only transferring minimal amounts of data. In the likely event of total loss of network connectivity, the PDA app will store an offline list of actions locally, at the expense of some the personalization and situational targeting of the dynamically updated action list. 
+For as long as network connectivity is maintained, updated actions lists will be pushed regularly, during the disaster. The application is designed to support intermittent connectivity by caching data on the phone and only transferring minimal amounts of data. In the likely event of total loss of network connectivity, the PDA app will store an offline list of actions locally, at the expense of some the personalization and situational targeting, compared to the dynamically updated list.
 
-When the disaster has ended, and the immediate damage has been addressed, the action suggestions can change to advice for long term health monitoring and recovery, including both physical and mental long-term effects, as well as advice on how to handle issues such as insurance claims, if applicable.
+In the immediate aftermath the action list changes again, with the emphasis changing to advice for long term health monitoring and recovery, including both physical and mental long-term effects. Advice at this point might also include when and how to reach out for help, and advice on giving and receiving support.
 
-To conclude, we believe this solution could be implemented today and would only require limited investment from organisations and users.
+Apart from the practical value of the advice, there is a mental health benefit from having a clear list of priority actions to take, and being able to feel that you are able to take some action for the good of yourself and the people important to you, taking some control of your situation.
 
 ## Solution roadmap
 

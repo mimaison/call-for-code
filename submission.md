@@ -10,7 +10,7 @@ Your handy, personalized digital assistant to surviving natural disasters.
 
 ## Long description
 
-During a natural disaster, it is hard to think clearly and calmly about what you need to do. Under stress, it is easy to react to situations without stopping to think and plan about what actions are the best to take, to safeguard yourself and those around you, not just in the immediate situation, but also in the short-term future. Just before disaster strikes, you are under pressure to make every preparation possible, as quickly as possible, without forgetting anything crucial.
+During a natural disaster, it is hard to think clearly and calmly about what you need to do. Under stress, it is easy to react to situations without stopping to think and plan about what actions are the best to take, to safeguard yourself and those around you or even worse to not react in a timely manner! To stand the best chance of a good outcome preparation is key. Before the disaster strikes, you are under pressure to make every preparation possible, as quickly as possible, without forgetting anything crucial. Both during and after the disaster the pressure is more intense and the need to follow key tasks is vital.
 
 Our solution is a mobile application, called the Personalized Disaster Assistant (PDA), that helps people affected by natural disaster by recommending personalized actionable tasks before, during and after a disaster.
 

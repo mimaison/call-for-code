@@ -34,11 +34,11 @@ See [roadmap.md](roadmap.md) for details about the current state of the project 
 
 ## Link to GitHub
 
-https://github.ibm.com/mickael-maison/call-for-code
+https://github.com/mimaison/call-for-code
 
 ## Link to a three-minute demo video
 
-https://ibm.ent.box.com/file/482578929629
+https://www.youtube.com/watch?v=htxF0iSsIpA
 
 ## List of IBM Cloud Services or IBM Systems used in the solution
 
